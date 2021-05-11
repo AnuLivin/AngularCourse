@@ -1,0 +1,143 @@
+
+<form [formGroup]="stdForm" name="myForm" (ngSubmit)="addData(stdForm.value)">
+<div class="form-group">
+    <Label>Name:</Label>
+    <input type="text" name="name" placeholder="Enter name here" class="form-control" formControlName="stdName" ngModel >
+    <div *ngIf="stdForm.get('stdName').touched && stdForm.get('stdName').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdName').errors.required">Required this field</div>
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdName').errors.pattern">Name contains character only</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Contact:</Label>
+    <input type="text" name="contact" placeholder="Enter contact here" class="form-control" formControlName="stdContact" ngModel>
+    <div *ngIf="stdForm.get('stdContact').touched && stdForm.get('stdContact').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdContact').errors.required">Required this field</div>
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdContact').errors.pattern">Invalid phone number</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Email:</Label>
+    <input type="text" name="email" placeholder="Enter email here" class="form-control" formControlName="stdEmail" ngModel>
+    <div *ngIf="stdForm.get('stdEmail').touched && stdForm.get('stdEmail').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdEmail').errors.required">Required this field</div>
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdEmail').errors.pattern">Invalid email format</div>
+    </div>
+</div>
+ <div class="form-group">
+    <Label>Qualification:</Label>
+    <select formControlName="stdQualification" class="form-control">
+        <option disabled selected value="null">--Select Qualification--</option>
+        <option  [value]="l" *ngFor="let l of qualArray">{{l}}</option>
+    </select>
+    <div *ngIf="stdForm.get('stdQualification').touched && stdForm.get('stdQualification').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdQualification').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Specialization:</Label>
+    <input type="text" name="specialization" placeholder="Enter specialization here" class="form-control" formControlName="stdSpecification" ngModel>
+    <div *ngIf="stdForm.get('stdSpecification').touched && stdForm.get('stdSpecification').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdSpecification').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Education Status: </Label>
+     <input type="radio" name="stdEdustatus" value="Appearing" formControlName="stdEdustatus" ngModel (click)="radioSel('Appearing')">Appearing
+     <input type="radio" name="stdEdustatus" value="Completed" formControlName="stdEdustatus" ngModel (click)="radioSel('Completed')">Completed
+     <div *ngIf="stdForm.get('stdEdustatus').touched && stdForm.get('stdEdustatus').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdEdustatus').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group" *ngIf="isCompleted">
+    <Label>Passout:</Label>
+    <input type="text" name="passout" placeholder="Enter passout here" class="form-control" formControlName="stdPassout"ngModel>
+    <div *ngIf="stdForm.get('stdPassout').touched && stdForm.get('stdPassout').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdPassout').errors.required">Required this field</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <Label>Collage:</Label>
+    <input type="text" name="collage" placeholder="Enter collage here" class="form-control" formControlName="stdCollage" ngModel>
+    <div *ngIf="stdForm.get('stdCollage').touched && stdForm.get('stdCollage').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdCollage').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>City:</Label>
+    <input type="text" name="city" placeholder="Enter City here" class="form-control" formControlName="stdCity" ngModel>
+    <div *ngIf="stdForm.get('stdCity').touched && stdForm.get('stdCity').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdCity').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Work Experience:</Label>
+    <select formControlName="stdworkexp" class="form-control">
+        <option disabled selected value="null">--Select Work Experience--</option>
+        <option  [value]="w" *ngFor="let w of wArray">{{w}}</option>
+    </select>
+    <div *ngIf="stdForm.get('stdworkexp').touched && stdForm.get('stdworkexp').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdworkexp').errors.required">Required this field</div>
+    </div>
+    
+
+
+</div>
+<div class="form-group">
+    <Label>Organization:</Label>
+    <input type="text" name="organization" placeholder="Enter organization here" class="form-control" formControlName="stdOrganisation" ngModel>
+    <div *ngIf="stdForm.get('stdOrganisation').touched && stdForm.get('stdOrganisation').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdOrganisation').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Are You MaxTech Student ?: </Label>
+    <input type="radio" name="stdLh" value="yes" formControlName="stdLh" ngModel>yes
+    <input type="radio" name="stdLh" value="no" formControlName="stdLh" ngModel>no 
+    <div *ngIf="stdForm.get('stdLh').touched && stdForm.get('stdLh').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdLh').errors.required">Required this field</div>
+    </div>
+</div> 
+<div class="form-group">
+    <Label>MaxTech Branch:</Label>
+    <select formControlName="stdLhBranch" class="form-control">
+        <option disabled selected value="null">--Select Branch--</option>
+        <option  [value]="l" *ngFor="let l of lhArray">{{l}}</option>
+    </select>
+    <div *ngIf="stdForm.get('stdLhBranch').touched && stdForm.get('stdLhBranch').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdLhBranch').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Course:</Label>
+    <select formControlName="stdCourse" class="form-control">
+        <option disabled selected value="null">--Select Course--</option>
+        <option  [value]="c" *ngFor="let c of cArray">{{c}}</option>
+    </select>
+    <div *ngIf="stdForm.get('stdCourse').touched && stdForm.get('stdCourse').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdCourse').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Where did you come to know about us:</Label>
+    <select formControlName="stdWheredidyoucame" class="form-control">
+        <option  [value]="r" *ngFor="let r of rArray">{{r}}</option>
+    </select>
+    <div *ngIf="stdForm.get('stdWheredidyoucame').touched && stdForm.get('stdWheredidyoucame').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdWheredidyoucame').errors.required">Required this field</div>
+    </div>
+</div>
+<div class="form-group">
+    <Label>Batch Type: </Label>
+    <input type="radio" name="stdbatchtype" value="Weekdays" formControlName="stdbatchtype" ngModel>Weekdays
+    <input type="radio" name="stdbatchtype" value="Weekend" formControlName="stdbatchtype" ngModel>Weekend
+    <div *ngIf="stdForm.get('stdbatchtype').touched && stdForm.get('stdbatchtype').invalid">
+        <div class="alert alert-danger" *ngIf="stdForm.get('stdbatchtype').errors.required">Required this field</div>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-primary ml-2" routerLink="/dashboard">Back</button>
+</form>
+
+

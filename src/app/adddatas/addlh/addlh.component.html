@@ -1,0 +1,11 @@
+<form #frmval="ngForm" name="myForm" (ngSubmit)="addData(frmval.value)">
+    <div class="form-group">
+        <Label>Enter Light House Name:</Label>
+        <input type="text" name="branch" placeholder="Enter light house name here" class="form-control" ngModel>
+    </div>
+    
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-primary ml-2" routerLink="/lighthouse">Back</button>
+</form>
+
+

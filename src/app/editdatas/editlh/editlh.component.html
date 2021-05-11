@@ -1,0 +1,9 @@
+<form #frmval="ngForm" name="myForm" (ngSubmit)="editData(frmval.value)">
+    <div class="form-group">
+        <Label>Enter Branch:</Label>
+        <input type="text" name="branch" placeholder="Enter  branch name here" class="form-control" [ngModel]="lhObj?.branch">
+    </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-primary ml-2" routerLink="/lighthouse">Back</button>
+</form>
+

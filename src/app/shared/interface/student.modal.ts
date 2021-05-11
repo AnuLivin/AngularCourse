@@ -1,0 +1,19 @@
+export interface IStudent {
+            id:number;
+            name:string;
+            contact:string;
+            email:string;
+            qualification:string;
+            specialization:string;
+            edustatus:string;
+            passout:string;
+            collage:string;
+            city:string;
+            workexp:string;
+            organization:string;
+            lh:string;
+            lhBranch:string;
+            course:string;
+            wheredidyoucame:string;
+            batchtype:string;
+}

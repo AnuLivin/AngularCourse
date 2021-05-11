@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-sm-8">
+        <button type="button" class="btn btn-primary mb-2" routerLink="/adddatas/addlh"><i class="fa fa-plus" aria-hidden="true"></i>Add</button>
+    </div>
+    <div class="col-sm-4" style="float: inline-end;">
+        <input type="text" name="search" placeholder="Search....." [(ngModel)]="term">
+    </div> 
+</div>
+<table class="table table-hover" >
+    <tr>
+        <th>
+            Sr.no
+        </th>
+        <th>
+            Light House Branch
+        </th>
+        <th>
+            Action
+        </th>
+
+    </tr>
+    <tr *ngFor="let l of lhArray| filter:term | paginate: { itemsPerPage: 6, currentPage: p } ">
+        <td>
+            {{l.id}}
+        </td>
+        <td>
+            {{l.branch}}
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-primary" (click)="openModal(template)"><i class="fa fa-eye" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-success" [routerLink]="['/editdatas','editlh',l.id]">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+            <button  type="button" class="btn btn-outline-danger"(click)="deleteLhData(l.id)">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+        </td>
+        <ng-template #template>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Light House Details</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table>
+                  <tr>
+                      <td>Light Id:</td><td>{{l.id}}</td>
+                  </tr>
+                  <tr>
+                    <td>Light House Branch:</td><td>{{l.branch}}</td>
+                </tr>
+              </table>
+            </div>
+          </ng-template>
+
+    </tr>
+</table>
+<pagination-controls (pageChange)="p = $event" style="float: right;"></pagination-controls>
+

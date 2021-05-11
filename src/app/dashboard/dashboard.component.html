@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-sm-8">
+        <button type="button" class="btn btn-primary mb-2" routerLink="/enroll"><i class="fa fa-plus" aria-hidden="true"></i>Add</button>
+    </div>
+    <div class="col-sm-4">
+        <input type="text" name="search" placeholder="Search....." [(ngModel)]="term">
+    </div> 
+</div>
+<table class="table table-hover">
+    <tr>
+        <th>
+            Std.Name
+        </th>
+        <th>
+            Contact
+        </th>
+        <th>
+            LH-Branch
+        </th>
+        <th>
+            Action
+        </th>
+
+    </tr>
+    <tr *ngFor="let s of stdArray| filter:term | paginate: { itemsPerPage: 6, currentPage: p } ">
+        <td>
+            {{s.name}}
+        </td>
+        <td>
+            {{s.contact}}
+        </td>
+        <td>
+            {{s.lhBranch}}
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-primary" (click)="openModal(template)"><i class="fa fa-eye" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-success" [routerLink]="['/editdatas','editstd',s.id]">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+            <button  type="button" class="btn btn-outline-danger"(click)="deleteData(s.id)">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+        </td>
+        <ng-template #template>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Student Details</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table>
+                  <tr>
+                    <td>Id:</td><td>{{s.id}}</td>
+                  </tr>
+                  <tr>
+                    <td>Student Name:</td><td>{{s.name}}</td>
+                  </tr>
+                  <tr>
+                    <td>Contact:</td><td>{{s.contact}}</td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td><td>{{s.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>Qualification:</td><td>{{s.qualification}}</td>
+                  </tr>
+                  <tr>
+                    <td>Specialization:</td><td>{{s.specialization}}</td>
+                  </tr>
+                  <tr>
+                    <td>Education status:</td><td>{{s.edustatus}}</td>
+                  </tr>
+                  <tr>
+                    <td>Passout:</td><td>{{s.passout}}</td>
+                  </tr>
+                  <tr>
+                    <td>Collage:</td><td>{{s.collage}}</td>
+                  </tr>
+                  <tr>
+                    <td>Work experience:</td><td>{{s.workexp}}</td>
+                  </tr>
+                  <tr>
+                    <td>Organisation:</td><td>{{s.organization}}</td>
+                  </tr>
+                  <tr>
+                    <td>MaxTech branch:</td><td>{{s.lhBranch}}</td>
+                  </tr>
+                  <tr>
+                    <td>Course:</td><td>{{s.course}}</td>
+                  </tr>
+                  <tr>
+                    <td>where did you come to know about us:</td><td>{{s.wheredidyoucame}}</td>
+                  </tr>
+                  <tr>
+                    <td>Batch Type:</td><td>{{s.batchtype}}</td>
+                  </tr>
+                  
+                  
+              </table>
+            </div>
+          </ng-template>
+
+    </tr>
+</table>
+<pagination-controls (pageChange)="p = $event" style="float: right;"></pagination-controls>
+

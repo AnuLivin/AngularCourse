@@ -1,0 +1,91 @@
+
+<form #frmval="ngForm" name="myForm" (ngSubmit)="editData(frmval.value)">
+    <div class="form-group">
+        <Label>Name:</Label>
+        <input type="text" name="name" placeholder="Enter name here" class="form-control" [ngModel]="stdObj?.name" >
+    </div>
+    <div class="form-group">
+        <Label>Contact:</Label>
+        <input type="text" name="contact" placeholder="Enter contact here" class="form-control" [ngModel]="stdObj?.contact">
+    </div>
+    <div class="form-group">
+        <Label>Email:</Label>
+        <input type="text" name="email" placeholder="Enter email here" class="form-control"  [ngModel]="stdObj?.email">
+    </div>
+    <div class="form-group">
+        <Label>Qualification:</Label>
+        <select name="qualification" class="form-control" [ngModel]="stdObj?.qualification">
+            <option disabled selected value="null">--Select Qualification--</option>
+            <option  [value]="l" *ngFor="let l of qualArray">{{l}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <Label>Specialization:</Label>
+        <input type="text" name="specialization" placeholder="Enter specialization here" class="form-control" [ngModel]="stdObj?.specialization">
+    </div>
+    <div class="form-group">
+        <Label>Education Status: </Label>
+         <input type="radio" name="edustatus" value="Appearing"  [ngModel]="stdObj?.edustatus" (click)="radioSel('Appearing')">Appearing
+         <input type="radio" name="edustatus" value="Completed"  [ngModel]="stdObj?.edustatus" (click)="radioSel('Completed')">Completed
+    </div>
+    <div class="form-group" *ngIf="isCompleted">
+        <Label>Passout:</Label>
+        <input type="text" name="passout" placeholder="Enter passout here" class="form-control"[ngModel]="stdObj?.passout">
+    </div>
+    
+    <div class="form-group">
+        <Label>Collage:</Label>
+        <input type="text" name="collage" placeholder="Enter collage here" class="form-control"  [ngModel]="stdObj?.collage">
+
+    </div>
+    <div class="form-group">
+        <Label>City:</Label>
+        <input type="text" name="city" placeholder="Enter City here" class="form-control" [ngModel]="stdObj?.city">
+    </div>
+    <div class="form-group">
+        <Label>Work Experience:</Label>
+        <select name="workexp" class="form-control" [ngModel]="stdObj?.workexp">
+            <option disabled selected value="null">--Select Work Experience--</option>
+            <option  [value]="w" *ngFor="let w of wArray">{{w}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <Label>Organization:</Label>
+        <input type="text" name="organization" placeholder="Enter organization here" class="form-control" [ngModel]="stdObj?.organization">
+    </div>
+    <div class="form-group">
+        <Label>Are You MaxTech Student ?: </Label>
+        <input type="radio" name="lh" value="yes" [ngModel]="stdObj?.lh">yes
+        <input type="radio" name="lh" value="no" [ngModel]="stdObj?.lh">no    
+    </div> 
+    <div class="form-group">
+        <Label>MaxTech Branch:</Label>
+            <select name="lhBranch" class="form-control"[ngModel]="stdObj?.lhBranch">
+                <option disabled selected value="null">--Select Branch--</option>
+                <option  [value]="l" *ngFor="let l of lhArray">{{l}}</option>
+            </select>
+
+    </div>
+    <div class="form-group">
+        <Label>Course:</Label>
+        <select name="course" class="form-control" [ngModel]="stdObj?.course">
+            <option disabled selected value="null">--Select Course--</option>
+            <option  [value]="c" *ngFor="let c of cArray">{{c}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <Label>Where did you come to know about us:</Label>
+        <select name="wheredidyoucame" class="form-control"[ngModel]="stdObj?.wheredidyoucame">
+            <option  [value]="r" *ngFor="let r of rArray">{{r}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <Label>Batch Type: </Label>
+        <input type="radio" name="batchtype" value="Weekdays" [ngModel]="stdObj?.batchtype">Weekdays
+        <input type="radio" name="batchtype" value="Weekend" [ngModel]="stdObj?.batchtype">Weekend
+    </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-primary ml-2" routerLink="/dashboard">Back</button>
+</form>
+
+    

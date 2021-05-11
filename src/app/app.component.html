@@ -1,0 +1,19 @@
+<div class="container bg-info border-primary">
+  <div class="card border-primary border-primary">
+      <div class="card-header border-primary" >
+          <app-header ></app-header>
+      </div>
+      
+          <div class="row">
+            <div class="col-2" style=" background-color: rgb(85, 39, 192); padding-left: 20px; padding-top: 20px ; padding-right: 20px;" *ngIf="rouObj.url!=='/' && rouObj.url!=='/login' && rouObj.url!=='**'">
+              <app-nav ></app-nav>
+            </div>
+            <div class="col-10" style="max-width: 100%;">
+              <router-outlet></router-outlet>
+            </div> 
+          </div>
+      <div class="card-footer border-primary" *ngIf="rouObj.url!=='/' && rouObj.url!=='/login' && rouObj.url!=='**'">
+        <app-footer></app-footer>
+      </div>
+  </div>
+</div>
